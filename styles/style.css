@@ -83,6 +83,7 @@ ul li a.current {
     overflow: hidden;
     margin: 10px;
     float: left;
+    background: #eee;
     box-sizing: border-box;
     border: 1px solid #ccc;
     box-shadow: 0 2px 2px #ccc;
@@ -151,7 +152,7 @@ ul li a.current {
 
 #gallery .container .gallery-container .project-holder img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 #gallery h2 {
