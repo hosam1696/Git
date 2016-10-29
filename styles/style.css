@@ -146,9 +146,10 @@ ul li a.current {
     text-decoration: none
 }
 
-.overlay button:hover {
+.overlay button:hover,.overlay a:hover  {
     background: #fff;
-    color: #333
+    color: #333;
+    text-decoration: none
 }
 
 #gallery .container .gallery-container .project-holder img {
