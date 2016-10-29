@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FlatIcons</title>
+	<style>
+        body {
+/*            background:linear-gradient(rgba(238, 238, 238, 0.8),rgba(238, 238, 238, 0.5)),url('ground2.png') no-repeat fixed;*/
+            background: radial-gradient(#d3d5d6,rgba(204, 204, 204, 0.76));
+            position: relative;
+            padding:0;
+            margin:0
+            
+        }
+        body:after {
+            content: "";
+            width: 100%;
+            height:100%;
+            position: absolute;
+            top:0;left:0;bottom:0;right:0;
+            background-image: url(v2.png) ;
+            background-repeat: repeat-y;
+            background-position: right;
+            z-index:-1;
+            opacity:.5
+        }
+        
+        body:before {
+            content: "";
+            width: 100%;
+            height:100%;
+            position: absolute;
+            top:0;left:0;bottom:0;right:0;
+            background-image: url(vv2.png) ;
+            background-repeat: repeat-y;
+            background-position: left;
+            z-index: -1;
+            opacity:.5
+           
+        }
+        #icons {
+            width:95%;
+            margin:0 auto;;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around
+    
+        }
+        #icons #icon {
+           display : inline-flex;
+            justify-content: center;
+            width:50px;
+            height: 100px;
+            background-color: #f2f2f2;
+            border:1px solid #ccc;
+            color: #0266a5;
+            padding:15px;
+            margin: 3px;
+            border-radius:3px;
+            font-size:3.5em;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 1px 1px #ccc;
+            transition: all .3s ease-in-out
+        }
+        #icons #icon:hover{
+            background-color: #c31bd1;
+            color:#fff
+        }
+        
+        #icons #name {
+            position: absolute;
+            bottom:0;
+            left:0;
+            width:100%;
+            color:#0266a5;
+            height:20px;
+            padding:3px 0 5px;
+            font-weight: bold;
+            font-family:monospace;
+            background:linear-gradient(#fff,rgba(243, 243, 243, 1));
+            box-shadow: 0 -1px 1px #ccc;
+            text-align: center;
+            font-size:14px
+        }
+    </style>
+</head>
+<body>
+    <div id="icons">
+       <script>
+           
+           // want to create the loop with php
+           
+            for (var i = 9985; i < 11175; i++) {
+                document.write("<div id='icon' class='ic'>");
+                document.write("&#" + i + ";");
+                document.write("<div id='name'  name='&#"+ i +";' >");
+                document.write("&amp;#" + i + ";");
+                document.write("</div>");
+                document.write("</div>");
+            }
+        </script>
+    </div>
+    
+    
+    <script type="text/javascript">
+        
+    //var wtc = document.getElementsByClassName("name");
+        
+    var ic =  document.body.querySelectorAll(".ic");
+    
+       for (i=0; i < ic.length; i++) {
+            ic[i].addEventListener("click", function() {
+        
+               copyText(ic);
+            });
+       } 
+    
+    function copyText(div) {
+        
+    var is = document.createElement("input");
+/*    is.style.visibility = "hidden";*/
+    document.body.appendChild(is);
+    is.setAttribute("value", ic[i].innerText[0] ) ;
+    is.select();
+    document.execCommand("copy");
+    document.body.removeChild(is);
+    }
+        //innerHTML.replace("&amp;","&")
+    document.addEventListener("scroll", function (e) {
+        
+        console.log(e);
+        var x = e.pageY;
+
+        document.body.style.background = "radial-gradient(#d3d5d6, rgba("+ Math.round(204 - (x/90)) +", "+ Math.round(204 - (x/90)) + ",204, 0.76))";
+    });
+    </script>
+</body>
+</html>
