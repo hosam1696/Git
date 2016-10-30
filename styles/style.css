@@ -178,3 +178,27 @@ ul li a.current {
     border-radius: 5px;
     text-shadow: 1px 1px 1px #fff
 }
+footer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+    word-spacing: 2px;
+    background: #222;
+    position: relative;
+    margin-top: 10px
+}
+footer:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+
+    margin-left: -20px;
+    top: -15px;
+    left: 50%;
+    background: #222;
+    z-index: -1;
+    border-radius: 50%
+}
