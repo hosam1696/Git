@@ -19,7 +19,7 @@ $(document).ready(function() {
               if($(this).data('project') == category) {
                   $(this).show(1000);
               } else {
-                  $(this).hide().css('transform', 'translateY(-10px)');
+                  $(this).hide();
               }
            });
        }
