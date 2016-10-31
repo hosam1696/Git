@@ -95,8 +95,8 @@ ul li a.current {
     transition: all .3s linear;
     position: relative;
     overflow: hidden;
-    /*border-radius: 5px;*/
-    cursor: pointer
+    /* border-radius: 5px; */
+    cursor: pointer;
 }
 
 #gallery .container .gallery-container .project-holder:hover {
@@ -115,23 +115,24 @@ ul li a.current {
 
 }
 #gallery .container .gallery-container .project-holder:hover .overlay {
-    top: 0
+    top: -10%
 }
 
 #gallery .container .gallery-container .project-holder:hover .overlay h3 {
-    margin-top: 15px
+    margin-top: 10px;
+    margin-bottom: 20px
 }
 
 #gallery .container .gallery-container .project-holder .overlay {
     position: absolute;
     width: 100%;
-    top: -100%;
+    top: -110%;
     -webkit-transition: top .6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     transition: top .6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     left: 0;
-    /*border-radius: 5px;*/
+    /* border-radius: 5px; */
     font-size: .8rem;
-    height: 100%;
+    height: 110%;
     box-sizing: border-box;
     padding: 5px;
     text-align: center;
@@ -140,7 +141,7 @@ ul li a.current {
     background-size: 40% 40%;
     background-position:-5% 0% , 105% 0%, -5% 100%, 105% 100%;
     background-repeat: no-repeat;
-    color: #fff
+    color: #fff;
 }
 
 .overlay h3 {
