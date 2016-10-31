@@ -23,10 +23,10 @@ header p {
     color: #dedede
 }
 
-ul {
-    padding: 10px 0 10px 35%;
+nav {
+    padding: 10px 0;
     display: block;
-    margin: auto auto;
+    
     overflow: hidden;
     background: -webkit-linear-gradient(45deg, transparent, transparent 49%, rgba(26, 26, 26, 0.02) 49%, rgba(26, 26, 26, 0.02) 50%, transparent 50%), -webkit-linear-gradient(-45deg, transparent, transparent 49%, rgba(26, 26, 26, 0.02) 49%, rgba(26, 26, 26, 0.02) 50%, transparent 50%);
     background-size: 14px 14px;
@@ -34,7 +34,7 @@ ul {
     background-color: #555;
     box-shadow: inset 1px 1px 1px #333, inset -1px -1px 1px #333
 }
-
+ul{margin: auto auto;display: table; font-size:.9rem}
 ul:after {
     content: '';
 }
