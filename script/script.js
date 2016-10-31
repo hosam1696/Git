@@ -1,5 +1,18 @@
 /*global $, document*/
 $(document).ready(function() {
+
+  var navOffset = $('nav').offset().top;
+$(window).scroll(function() {
+
+  if($(window).scrollTop() >= navOffset) {
+    $('body').css('padding-top', '62px');
+    $('nav').css({'position': 'fixed', 'width': '100%','top': '0', 'left': '0', 'z-index': '99'});
+    
+  } else {
+    $('nav').css('position', 'relative');
+    $('body').css('padding-top', '0')
+  }
+})
    $('nav ul').find('a').on('click', function(event) {
        event.preventDefault();
        $('nav ul').find('a').removeClass('current');
