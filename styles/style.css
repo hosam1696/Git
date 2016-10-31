@@ -34,7 +34,7 @@ nav {
     background-color: #555;
     box-shadow: inset 1px 1px 1px #333, inset -1px -1px 1px #333
 }
-ul{margin: auto auto;display: table; font-size:.9rem}
+ul{margin: auto auto;display: table; padding:0}
 ul:after {
     content: '';
 }
@@ -236,3 +236,4 @@ footer:after {
         width: 90%
     }
 }
+@media (max-width:450px){ul{font-size:.8rem;}}
