@@ -107,7 +107,12 @@ ul li a.current {
 }
 #gallery .container .gallery-container .project-holder:hover img {
     transition: transform .2s ease-in-out;
-    transform: scale(1.2)
+    transform: scale(1.2);
+    -o-transform: scale(1.2);
+-moz-transform: scale(1.2);
+
+-webkit-transform: scale(1.2)
+
 }
 #gallery .container .gallery-container .project-holder:hover .overlay {
     top: 0
@@ -121,8 +126,8 @@ ul li a.current {
     position: absolute;
     width: 100%;
     top: -100%;
-    -webkit-transition: top .5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    transition: top .5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    -webkit-transition: top .6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    transition: top .6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     left: 0;
     border-radius: 5px;
     font-size: .8rem;
@@ -139,8 +144,8 @@ ul li a.current {
 }
 
 .overlay h3 {
-    -webkit-transition: margin-top .25s ease-in .3s;
-    transition: margin-top .25s ease-in .3s;
+    -webkit-transition: margin-top .25s ease-in .35s;
+    transition: margin-top .25s ease-in .35s;
     margin-top: 60px;
     letter-spacing: 1px
 }
@@ -169,7 +174,7 @@ border-right: 1px solid rgba(205, 17, 75, .6);
 right:0;
 }
 .overlay button:hover,.overlay a:hover  {
-    background: rgba(255, 255, 255, .8);
+    background: rgba(255, 255, 255, .95);
     color: rgb(202, 13, 71);
     text-decoration: none
 }
