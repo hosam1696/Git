@@ -26,11 +26,11 @@ $(window).scroll(function() {
        // remove hidden class if all projects si selected
        
        if(category == 'all') {
-           $('#gallery').find('.project-holder').show(1000).removeClass('hidden');
+           $('#gallery').find('.project-holder').show().removeClass('hidden');
        } else {
            $('#gallery').find('.project-holder').each(function() {
               if($(this).data('project') == category) {
-                  $(this).show(1000);
+                  $(this).show();
               } else {
                   $(this).hide();
               }
