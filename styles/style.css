@@ -153,11 +153,11 @@ ul li a.current {
     color: #eee
 }
 .overlay button,.overlay a {
-    background: rgb(223, 22, 84);
+    background: rgba(255, 255, 255, 0.38) ;
     border-top: 1px solid rgba(205, 17, 75, .6);
     position: absolute;
     bottom: 0;
-    color: #eee;
+    color: rgb(202, 13, 71);
     cursor: pointer;
     transition: background .2s linear;
     text-decoration: none;
@@ -174,8 +174,8 @@ border-right: 1px solid rgba(205, 17, 75, .6);
 right:0;
 }
 .overlay button:hover,.overlay a:hover  {
-    background: rgba(255, 255, 255, .95);
-    color: rgb(202, 13, 71);
+    background: rgb(223, 22, 84);
+    color: #fff;
     text-decoration: none
 }
 
