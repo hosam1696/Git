@@ -105,7 +105,10 @@ ul li a.current {
     -moz-transform: translateY(-5px);
     transform: translateY(-5px)
 }
-
+#gallery .container .gallery-container .project-holder:hover img {
+    transition: transform .2s ease-in-out;
+    transform: scale(1.1) rotate(20deg)
+}
 #gallery .container .gallery-container .project-holder:hover .overlay {
     top: 0
 }
