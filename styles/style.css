@@ -236,4 +236,5 @@ footer:after {
         width: 90%
     }
 }
-@media (max-width:450px){ul{font-size:.8rem;}}
+@media (max-width:450px){ul{font-size:.6rem;}
+footer{font-size: .55rem}}
