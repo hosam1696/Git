@@ -2,6 +2,9 @@
 $(document).ready(function() {
 
   var navOffset = $('nav').offset().top;
+
+  $('#follow').addClass('show');
+
 $(window).scroll(function() {
 
   if($(window).scrollTop() >= navOffset) {
