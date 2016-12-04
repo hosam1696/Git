@@ -231,6 +231,23 @@ footer:after {
     border-radius: 50%
 }
 
+#follow {
+    width: 100px;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    right: -100px;
+    text-align: center;
+    text-decoration: none;
+    transition: right 1s ease-in-out;
+    color: #666;
+
+}
+#follow.show {right: 0; transition: right .6s ccubic-bezier(0.68, -0.55, 0.27, 1.55);transition-delay: 1.5s}
+#follow h6 {
+    margin: 0;
+
+}
 /* ==== image modal =======*/
 
 #bg-modal {
