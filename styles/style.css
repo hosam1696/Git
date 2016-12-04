@@ -2,7 +2,7 @@ body {
     background: #eee;
     margin: 0;
     padding: 0;
-    font-family: 'source sans pro'
+    font-family: 'source sans pro', 'source code pro', sans-serif
 }
 
 header {
