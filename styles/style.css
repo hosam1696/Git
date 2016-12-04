@@ -236,14 +236,31 @@ footer:after {
     height: auto;
     position: fixed;
     top: 50%;
-    right: -100px;
+    right: -110px;
     text-align: center;
     text-decoration: none;
     transition: right 1s ease-in-out;
-    color: #666;
+    color: #777;
+    background-color: #fff;
+    padding: 5px 0;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #e3e3e3
+}
+#follow:after {
+    content: '*';
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    border-radius: 50%;
+    background-color: #5ac4f5;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    line-height: 35px;
+    font-size: 35px;
 
 }
-#follow.show {right: 0; transition: right .6s ccubic-bezier(0.68, -0.55, 0.27, 1.55);transition-delay: 1.5s}
+#follow.show {right: 0; transition: right .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);transition-delay: 1.5s}
 #follow h6 {
     margin: 0;
 
