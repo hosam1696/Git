@@ -13,9 +13,9 @@ $(window).scroll(function() {
     
   } else {
     $('nav').css('position', 'relative');
-    $('body').css('padding-top', '0')
+    $('body').css('padding-top', '0');
   }
-})
+});
    $('nav ul').find('a').on('click', function(event) {
        event.preventDefault();
        $('nav ul').find('a').removeClass('current');
@@ -50,7 +50,6 @@ $(window).scroll(function() {
         bgModal.find('img').on('load', function() {
             bgModal.find('.bg-img').removeClass('hide');
             bgModal.find('.bg-img-alt').addClass('hide');
-            //bgModal.find("#bg-modal-content .bg-img").css('height', bgModal.find(".bg-img").find('img').css('height'));
         });
 
     });
