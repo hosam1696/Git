@@ -50,12 +50,17 @@ ul li a {
     padding: 10px 25px;
     display: inline-block;
     border-bottom: 2px solid transparent;
+    margin-right: 2px
+}
+a:hover {
+    text-decoration: none;
 }
 
 ul li a:hover {
     background: #444;
     border-radius: 5px;
     color: #fff;
+    text-decoration: none;
 }
 
 ul li a:active,
@@ -72,43 +77,134 @@ ul li a.current {
     min-height: 450px
 }
 
-#gallery .container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px 0;
-    
-}
-
 #gallery .container .gallery-container .project-holder {
-    width: 23%;
-    height: 200px;
     overflow: hidden;
-    margin: 10px;
-    float: left;
-    background: #eee;
+    margin-bottom: 15px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 2px #ccc;
     border-radius: 5px;
     -webkit-transition: all .2s linear;
     transition: all .3s linear;
     position: relative;
     /* border-radius: 5px; */
+}
+
+#gallery .container .gallery-container .project-holder .project-content {
+    padding: 10px;
+    background: linear-gradient(#fff,rgb(243, 243, 243), #fff);
+    border: 1px solid #ccc;
+}
+
+.project-content a {
+    width: 100%;
+    padding: 8px;
+    color: #eee;
+    background-color: #0ebeff;
+    display: block;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    position: relative;
+    overflow: hidden;
+}
+.project-content a:before {
+
+    position: absolute;
+    width: 100%;
+    padding: 8px;
+    color: #fff;
+    text-align: center;
+    top: -100%;
+    left: 0;
+    font-weight: bold;
+    transition: top .2s ease-in-out .15s;
+    z-index: 10
+}
+.project-content a:first-of-type:before{
+    content: 'view website ❖';
+}
+.project-content a:last-of-type:before{
+    content: 'view project ❖';
+}
+.project-content a:after {
+    content: '';
+    position: absolute;
+
+    height: 150px;
+    background-color: #006bff;
+    top: -75px;
+    left: -150px;
+    border-radius: 50%;
+    width: 150px;
+    transition: transform .25s ease;
+
+}
+.project-content a:hover:after {
+    transform: scale(6);
+}
+.project-content a:hover:before {
+    top: 0;
+}
+.gallery-container .project-holder .project-image {
+    width: 96%;
+    margin: 0 auto;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    position: relative;
     cursor: pointer;
 }
+.gallery-container .project-holder .project-image .overlay {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   /* background: linear-gradient(45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%), linear-gradient(-45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%),linear-gradient(-45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%), linear-gradient(45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%), url(http://www.incomm.com/Style%20Library/Images/incomm-magnify.png);
+    background-size: 40% 40%, 40% 40%, 40% 40%, 40% 40%, 50px 50px;
+    background-position:-5% 0% , 105% 0%, -5% 100%, 105% 100%, center center;*/
 
+    background:url(http://www.citycentremallbeirut.com/-/media/images/shared/search-store.png?h=50&w=50&la=en&hash=A39F39FD406DDA7BC37C3CD1113C80E469CABF97), linear-gradient(-30deg,rgba(7, 61, 64, 0.92),rgba(43, 5, 5, 0.92));
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 
-#gallery .container .gallery-container .project-holder:hover img {
+    /* border-radius: 5px; */
+    font-size: .8rem;
+    opacity: 0;
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+    z-index: 4;
+}
+.project-image .status {
+    position: absolute;
+    top: 0;
+    right: -35px;
+    padding: 10px 40px;
+    color: #fff;
+    background-color: cadetblue;
+    content: "For Sale";
+    transform: rotate(45deg);
+    background: linear-gradient(rgba(223, 22, 84, 0.6), rgba(223, 16, 55, 0.6));
+    z-index: 5;
+}
+#gallery .container .gallery-container .project-holder:hover .project-image img {
     transition: transform .5s ease-in-out;
-    transform: scale(1.2);
-    -o-transform: scale(1.2);
--moz-transform: scale(1.2);
+    transform: scale(1.35);
+    -o-transform: scale(1.35);
+-moz-transform: scale(1.35);
 
--webkit-transform: scale(1.2)
+-webkit-transform: scale(1.35)
 
 }
+#gallery .container .gallery-container .project-holder:hover {
+    box-shadow: 0 18px 5px -14px #999;
+}
 #gallery .container .gallery-container .project-holder:hover .overlay {
-    top: -10%
+    top: 0%;
+    opacity: 1
 }
 
 #gallery .container .gallery-container .project-holder:hover .overlay h3 {
@@ -116,26 +212,6 @@ ul li a.current {
     margin-bottom: 20px
 }
 
-#gallery .container .gallery-container .project-holder .overlay {
-    position: absolute;
-    width: 100%;
-    top: -110%;
-    -webkit-transition: top .6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    transition: top .6s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    left: 0;
-    /* border-radius: 5px; */
-    font-size: .8rem;
-    height: 110%;
-    box-sizing: border-box;
-    padding: 5px;
-    text-align: center;
-    background: linear-gradient(45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%), linear-gradient(-45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%),linear-gradient(-45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%), linear-gradient(45deg, transparent, transparent 49%, rgba(226, 226, 226, 0.2) 49%, rgba(226, 226, 226, 0.2) 50%, transparent 50%);
-    background-color: rgba(28, 26, 31, 0.6);
-    background-size: 40% 40%;
-    background-position:-5% 0% , 105% 0%, -5% 100%, 105% 100%;
-    background-repeat: no-repeat;
-    color: #fff;
-}
 
 .overlay h3 {
     -webkit-transition: margin-top .25s ease-in .35s;
