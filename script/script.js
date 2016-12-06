@@ -13,14 +13,14 @@ $(window).scroll(function() {
     
   } else {
     $('nav').css('position', 'relative');
-    $('body').css('padding-top', '0')
+    $('body').css('padding-top', '0');
   }
-})
+});
    $('nav ul').find('a').on('click', function(event) {
-       event.preventDefault();
-       $('nav ul').find('a').removeClass('current');
-       $(this).addClass('current');
-       $('#cat').text($(this).text());
+           event.preventDefault();
+           $('nav ul').find('a').removeClass('current');
+           $(this).addClass('current');
+           $('#cat').text($(this).text());
        
        // get & filter link text
        
@@ -41,7 +41,7 @@ $(window).scroll(function() {
        }
    });
     let bgModal = $("#bg-modal");
-    $(".project-holder").find('a:last-child').on('click', function() {
+    $(".project-holder").find('.project-image').on('click', function() {
 
         $('body').addClass('body-overflow');
         bgModal.addClass('modal-open');
@@ -50,7 +50,6 @@ $(window).scroll(function() {
         bgModal.find('img').on('load', function() {
             bgModal.find('.bg-img').removeClass('hide');
             bgModal.find('.bg-img-alt').addClass('hide');
-            //bgModal.find("#bg-modal-content .bg-img").css('height', bgModal.find(".bg-img").find('img').css('height'));
         });
 
     });
