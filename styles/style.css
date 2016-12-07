@@ -179,6 +179,7 @@ left: 0;
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    height: 100%
 }
 .gallery-container .project-holder .project-image .overlay {
     position: absolute;
