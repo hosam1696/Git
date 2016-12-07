@@ -2,15 +2,22 @@
 $(document).ready(function() {
 
   var navOffset = $('nav').offset().top;
+  var projectImage = $('.project-image img');
 
   $('#follow').addClass('show');
+
+    $('.project-image').height(projectImage.height());
+    $(window).on('resize', function(){
+        $('.project-image').height(projectImage.height());
+
+  });
 
 $(window).scroll(function() {
 
   if($(window).scrollTop() >= navOffset) {
     $('body').css('padding-top', '62px');
     $('nav').css({'position': 'fixed', 'width': '100%','top': '0', 'left': '0', 'z-index': '99'});
-    
+
   } else {
     $('nav').css('position', 'relative');
     $('body').css('padding-top', '0');
@@ -21,13 +28,13 @@ $(window).scroll(function() {
            $('nav ul').find('a').removeClass('current');
            $(this).addClass('current');
            $('#cat').text($(this).text());
-       
+
        // get & filter link text
-       
+
        var category = $(this).text().toLowerCase();
-       
+
        // remove hidden class if all projects si selected
-       
+
        if(category == 'all') {
            $('#gallery').find('.project-holder').show().removeClass('hidden');
        } else {
@@ -64,3 +71,4 @@ $(window).scroll(function() {
 
 
 });
+
