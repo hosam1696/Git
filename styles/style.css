@@ -93,7 +93,7 @@ ul li a.current {
 
 #gallery .container .gallery-container .project-holder .project-content {
     padding: 10px;
-    background: linear-gradient(#fff,rgb(243, 243, 243), #fff);
+    background: linear-gradient(#bebebe,rgb(243, 243, 243), #d2d2d2);
     border: 1px solid #ccc;
     position: relative;
     border-top-color: transparent;
@@ -105,7 +105,7 @@ ul li a.current {
     width: 4%;
 
     height: 10%;
-    background-color: #fffefe;
+    background-color: #ccc;
 
 
     z-index: -1;
@@ -310,10 +310,10 @@ left: 0;
     text-shadow: 1px 1px 1px #fff
 }
 footer {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 20px;
+    padding-bottom: 10px;
     text-align: center;
-    color: #ccc;
+    color: #999;
     font-size: 14px;
     word-spacing: 2px;
     background: #222;
@@ -328,7 +328,7 @@ footer:after {
     height: 40px;
 
     margin-left: -20px;
-    top: -15px;
+    top: -10px;
     left: 50%;
     background: #222;
     z-index: -1;
@@ -348,7 +348,8 @@ footer:after {
     background-color: #fff;
     padding: 5px 0;
     border-radius: 5px 0 0 5px;
-    border: 1px solid #e3e3e3
+    border: 1px solid #e3e3e3;
+    z-index: 99999;
 }
 #follow:after {
     content: '*';
@@ -364,7 +365,8 @@ footer:after {
     font-size: 35px;
 
 }
-#follow.show {right: 0; transition: right .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);transition-delay: 1.5s}
+#follow.show {right: 0; transition: right .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);transition-delay: 1.5s
+    z-index: 99999;}
 #follow h6 {
     margin: 0;
 
