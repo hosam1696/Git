@@ -77,9 +77,13 @@ ul li a.current {
     background: -webkit-linear-gradient(45deg, transparent, transparent 49%, rgba(26, 26, 26, 0.02) 49%, rgba(26, 26, 26, 0.02) 50%, transparent 50%), -webkit-linear-gradient(-45deg, transparent, transparent 49%, rgba(26, 26, 26, 0.02) 49%, rgba(26, 26, 26, 0.02) 50%, transparent 50%);
     background-size: 14px 14px;
     background-repeat: repeat;
-    min-height: 450px
+    min-height: 450px;
+    padding: 15px 0 30px
 }
-
+#gallery h2 {
+    font-weight: bold;
+    text-indent: 5px
+}
 #gallery .container .gallery-container .project-holder {
     overflow: hidden;
     margin-bottom: 15px;
@@ -182,6 +186,17 @@ left: 0;
     height: 300px;
     background-color: #ccc;
 }
+.gallery-container .project-holder .project-image.angular {
+    background-image: url('http://findicons.com/files/icons/2773/pictonic_free/128/angularjs.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+.gallery-container .project-holder .project-image.wordpress {
+    background-image: url('http://wordpressconversionservice.com/wp-content/uploads/2015/02/wordpress111.png');
+    background-position: center;
+    background-repeat: no-repeat
+}
+
 .gallery-container .project-holder .project-image .overlay {
     position: absolute;
     top: -10%;
