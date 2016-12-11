@@ -1,0 +1,13 @@
+<h1>The Forcasted city is <b ng-cloak>{{city}}</b></h1>
+<div ng-repeat="w in wResult.list">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{w.dt}}
+            </div>
+            <div class="panel-body">
+                Day Temprature: {{w.temp}}
+            </div>
+        </div>
+    </div>
+</div>

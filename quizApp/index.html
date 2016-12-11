@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Quiz">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <title>AngularJs QuizApp</title>
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(-45deg, rgb(208, 204, 204), rgb(208, 204, 204) 50%, rgb(198, 196, 196) 50%);
+            /*            background: linear-gradient(-45deg,rgb(220, 241, 252),rgb(242, 250, 255) 50%,rgb(244, 251, 255) 50%);*/
+            /*            background:url('img/bg-lg.png');*/
+            background-size: cover;
+        }
+        /*        quiz   */
+        
+        .qnum {
+            padding: 5px 15px;
+            margin: 0 2px;
+            outline: none !important
+        }
+        
+        #result {
+            width: 100%;
+            height: 200px;
+            background-color: #fff;
+            box-shadow: inset 0 2px 4px #ccc, inset 0 -2px 4px rgba(158, 158, 158, 0.9);
+            padding: 50px
+        }
+        
+        .progress-panel {
+            padding: 10px;
+            background: #f9f8f8;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .well-questions {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        
+        .inline {
+            display: inline-block
+        }
+        
+        .btn-info {
+            background-color: #31b0d5
+        }
+        
+        .well {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 20%, rgba(238, 238, 238, 0.6) 30%, rgba(238, 238, 238, 0.6));
+        }
+        
+        .q-on {
+            box-shadow: 0 8px 9px -6px rgba(158, 158, 158, 0.93);
+            transform: scale(1.05) translateY(-2px);
+            transition: all .2s ease-in;
+        }
+        
+        .hints {
+            line-height: 28px;
+        }
+        
+        .q-hint {
+            background: #fff;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-top: 15px
+        }
+        
+        .q-hint:nth-of-type(1) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none
+        }
+        
+        .q-hint:nth-of-type(2) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        
+        .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(240, 248, 255, 0.19);
+            color: #fff
+        }
+        
+        #target-info {
+            overflow: hidden;
+        }
+        
+        #target-info .modal-dialog {
+            border-radius: 8px;
+            max-height: 85vh;
+            overflow: hidden
+        }
+        
+        .turtlesList {
+            opacity: 5;
+            transition: all 2s ease-in-out
+        }
+        
+        .turtlesList.ng-hide {
+            transform: translateY(-30px);
+            transition: all 2s ease-in-out;
+        }
+        
+        input[type="text"] {
+            color: #333;
+            border-color: #ccc;
+        }
+        
+        .search-icon {
+            margin-left: -25px
+        }
+        
+        #bg1 {
+            background: #1b7bce;
+        }
+        
+        #bg1 .square {
+            background: #125896;
+        }
+        
+        #bg1 .triangle {
+            background: #125896;
+        }
+        
+        .background {
+            height: 230px;
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+            margin: 10px auto;
+            border-radius: 5px;
+            /*            line-height: 250px;*/
+            text-align: center;
+        }
+        
+        .background .content {
+            position: relative;
+            color: #fff;
+            z-index: 99;
+            top: 30%
+        }
+        
+        .background .icon {
+            position: absolute;
+            z-index: 99;
+            color: #fff;
+            bottom: -20%;
+            opacity: .15;
+            font-size: 20em
+        }
+        
+        .content h1 {
+            margin: 0;
+            font-family: 'Open Sans Condensed', sans-serif;
+            word-spacing: 4px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-size: 2.5em
+        }
+        
+        .square {
+            position: absolute;
+            -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)
+        }
+        
+        .triangle {
+            position: absolute;
+            -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 50%, 0% 50%);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 50%, 0% 50%);
+        }
+    </style>
+</head>
+
+<body>
+    <!--<nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" href="#/">Quiz AngularJs</a> </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/forcast">Forcast</a></li>
+            </ul>
+        </div>
+    </nav>-->
+    <!--    Turtles Top Background    -->
+    <section id="bg1" class="background">
+        <div class="icon">❉</div>
+        <div class="content">
+            <h1>Turtles AngularJs Quiz</h1>
+            <p>take a look at turtles below before quiz!</p>
+        </div>
+    </section>
+    <!--    List of turles    -->
+    <section ng-controller="listCtrl as list">
+        <!--     search section & action button  -->
+        <section id="search">
+            <div class="container">
+                <div class="row">
+                    <div class="thumbnail">
+                        <form action="" class="form-inline pull-left">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="search" ng-model="list.search"> </div> <span class="glyphicon glyphicon-search text-muted search-icon"></span> </form>
+                        <button class="btn btn-primary pull-right" data-target="#confirm-modal" data-toggle="modal">start Quiz</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--   Turtles grid info     -->
+        <div class="container turtlesList" ng-hide="list.quizMatrix.quizActive === true">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="turtle in list.data | filter:list.search">
+                    <div class="thumbnail">
+                        <div class="row">
+                            <div class="col-md-6"> <img ng-src="{{turtle.image_url}}" alt="sf" class="img-responsive"> </div>
+                            <div class="col-md-6">
+                                <h4 class="text-primary">{{turtle.type}}</h4>
+                                <p><b>Locations: </b>{{turtle.locations}}</p>
+                                <p><b>Size: </b>{{turtle.size}}</p>
+                                <p><b>diet: </b>{{turtle.diet}}</p>
+                                <button class="btn btn-default" data-target="#target-info" data-toggle="modal" ng-click="list.changeTurtle(turtle)">learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--     Thumbnail            -->
+                </div>
+                <!--     Turtle Block            -->
+            </div>
+            <!--     row            -->
+        </div>
+        <!--        Modal     -->
+        <!--   turtle modal    -->
+        <div class="modal fade" id="target-info" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{list.activeTurtle.type}}</h4> </div>
+                    <div class="modal-body"> <img ng-src="{{list.activeTurtle.image_url}}" alt="{{list.activeTurtle.type}}" class="text-center img-responsive">
+                        <hr>
+                        <p><b class="badge">Locations: </b>{{list.activeTurtle.locations}}</p>
+                        <p><b class="badge">Size: </b>{{list.activeTurtle.size}}</p>
+                        <p><b class="badge">diet: </b>{{list.activeTurtle.diet}}</p>
+                        <div class="jumbotron"> {{list.activeTurtle.description}} </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!--   confirm moadl       -->
+        <div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="background:url('img/cbchrct_final.png');background-size: 200px 200px; background-position: center left;background-repeat: no-repeat;height: 200px">
+                        <p class="text-right lead" style="line-height: 200px">Are You Ready to start the <b>Quiz</b> !?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Not Yet</button>
+                        <button type="button" class="btn btn-success" ng-click="list.activateQuiz()" data-dismiss="modal">I am ready</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
+    </section>
+    <!--    Quiz questions   -->
+    <section id="quiz" ng-controller="quizCtrl as quiz" ng-show="quiz.quizMatrix.quizActive === true">
+        <div class="container">
+            <div class="row progress-panel">
+                <div class="col-sm-8">
+                    <h3>Progress:</h3>
+                    <label ng-repeat="question in quiz.questions">
+                        <button class="btn qnum" type="button" ng-class="{
+                        'btn-info': question.selected !== null,
+                        'btn-danger': question.selected === null,
+                        'q-on': $index === quiz.selectedQuest
+                        
+                    }" ng-click="quiz.chSelectedQuest($index)"> <span class="glyphicon " ng-class="{
+                            'glyphicon-pencil': question.selected !== null,
+                             'glyphicon-question-sign': question.selected === null,   
+                            
+                        }"><br>{{$index+1}}</span> </button>
+                    </label>
+                </div>
+                <div class="col-sm-4 hints">
+                    <div class="row">
+                        <div class="col-sm-6 q-hint text-center"> <span class="glyphicon glyphicon-question-sign bg-danger text-center" style="padding:8px;border-radius:4px"></span>
+                            <p class="text-muted">* UnAnswered Question</p>
+                        </div>
+                        <div class="col-sm-6 q-hint text-center"> <span class="glyphicon glyphicon-pencil bg-primary text-center " style="padding:8px;border-radius:4px"></span>
+                            <p class="text-muted">* Answered Question</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--            result    -->
+            <div id="result" ng-show="quiz.finish >= quiz.questionsNum">
+                <div class="row text-center">
+                    <div class="col-sm-6">
+                        <div class="pull-left">
+                            <h1 class="text-danger"><span class="glyphicon glyphicon-ok-sign"></span> Your Score </h1>
+                            <p>You have answered <b>{{quiz.score}}</b> correct questions out of <b>{{quiz.questionsNum}}</b></p>
+                        </div> <span class="glyphicon glyphicon-chevron-right pull-right  " style="    font-size: 10rem;
+    color: #ddd;
+    margin-right: -5rem;"></span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <canvas id="loader" width="100" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!--            question list numbers -->
+            <div class="row">
+                <div class="well well-questions">
+                    <!--                       errors     -->
+                    <div class="alert alert-warning" ng-show="quiz.error">{{quiz.error}}</div>
+                    <h4 class="text-primary"><b>{{quiz.selectedQuest+1}}-  {{quiz.questions[quiz.selectedQuest].text}}</b></h4>
+                    <hr>
+                    <!--                    Quiz questions    -->
+                    <ul class="nav row">
+                        <li ng-click="quiz.selectAnswer($index)" ng-repeat="one in quiz.questions[quiz.selectedQuest].possibilities" class="col-sm-6  inline thumbnail" ng-class="{
+                             'btn-info': quiz.questions[quiz.selectedQuest].selected === $index
+                         }"> <span ng-if="quiz.questions[quiz.selectedQuest].type == 'text'">
+                          {{$index+1}}: {{one.answer}}
+                             
+                         </span> <span ng-if="quiz.questions[quiz.selectedQuest].type == 'image'">
+                             {{$index+1}}:
+                             <img ng-src="{{one.answer}}" alt="" class="img-responsive">
+                         </span> </li>
+                    </ul>
+                    <hr>
+                    <button class="btn btn-lg btn-info center-block" ng-click="quiz.plusActive()">continue</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--    Scripts         -->
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
+    <script src="js/angular-cookies.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <!--    quiz app -->
+    <script src="js/canvas.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/quiz.js"></script>
+    <script src="js/controllers/list.js"></script>
+    <script src="js/factories/quizM.js"></script>
+    <script src="js/factories/questQuiz.js"></script>
+    <!--    <script src="js/scripts.js"></script>-->
+</body>
+
+</html>
