@@ -94,10 +94,16 @@
         
         #target-info .modal-dialog {
             border-radius: 8px;
-            max-height: 85vh;
-            overflow: hidden
+            height: 85vh;
+            overflow-y: scroll;
         }
-        
+        #target-info .modal-dialog::-webkit-scrollbar{
+            width: .5em;
+        }
+        #target-info .modal-dialog::-webkit-scrollbar-thumb{
+            background-color: #555;
+            border-radius: 5px
+        }
         .turtlesList {
             opacity: 5;
             transition: all 2s ease-in-out
